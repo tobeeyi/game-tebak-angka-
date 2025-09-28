@@ -7,11 +7,12 @@
     body {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin-top: 50px;
-  background-color: #fdb0c0;
-  color: #fdfbfb;
+  margin-top: 200px;
+  color: #f87e90;
+  text-shadow: 2px 2px 4px #000;
+  padding: 40px 20px;
+  font-size: clamp(16px, 4vw, 24px);
 
-  /* 🐇 tambahan */
   background-image: url("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNyMmdyaDJjOWt3ZnczMzJrd3FzM3d4YmJ5OW4xYTk4em8yMzZqYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26FxABM5jBLKLWQve/giphy.gif");
   background-repeat: repeat;
   background-position: left bottom;
@@ -32,7 +33,7 @@
   </style>
 </head>
 <body>
-  <h1>🎲 Game Tebak Angka (1-100) 🎲</h1>
+  <h1>🎲 Game Tebak Angka 🎲</h1>
   <p>Aku sudah pilih angka antara <b>1 - 100</b>. Tebak yuk!</p>
 
   <input type="number" id="tebakan" placeholder="Masukkan angka">
@@ -47,6 +48,15 @@
 
     document.getElementById("kesempatan").innerText = 
       "Kesempatan: " + kesempatan;
+
+      const input = document.getElementById("tebakan");
+    input.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        cekTebakan();
+      }
+    });
+
 
     function cekTebakan() {
       let tebakan = document.getElementById("tebakan").value;
