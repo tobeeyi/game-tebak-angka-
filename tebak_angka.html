@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Tebak Angka</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+  background-color: #fdb0c0;
+  color: #fdfbfb;
+
+  /* 🐇 tambahan */
+  background-image: url("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNyMmdyaDJjOWt3ZnczMzJrd3FzM3d4YmJ5OW4xYTk4em8yMzZqYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26FxABM5jBLKLWQve/giphy.gif");
+  background-repeat: repeat;
+  background-position: left bottom;
+  background-size: 200px;
+}
+}
+
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    #hasil {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Game Tebak Angka (1-100) 🎲</h1>
+  <p>Aku sudah pilih angka antara <b>1 - 100</b>. Tebak yuk!</p>
+
+  <input type="number" id="tebakan" placeholder="Masukkan angka">
+  <button onclick="cekTebakan()">Tebak!</button>
+
+  <p id="hasil"></p>
+  <p id="kesempatan"></p>
+
+  <script>
+    let tebakAngka = Math.floor(Math.random() * 100) + 1;
+    let kesempatan = 10;
+
+    document.getElementById("kesempatan").innerText = 
+      "Kesempatan: " + kesempatan;
+
+    function cekTebakan() {
+      let tebakan = document.getElementById("tebakan").value;
+      let hasil = document.getElementById("hasil");
+
+      if (kesempatan > 0) {
+        if (tebakan == tebakAngka) {
+          hasil.innerText = " SELAMAT! Angka yang kamu tebak benar, yaitu: " + tebakAngka + "✧٩(•́⌄•́๑)و";
+        } else if (tebakan < tebakAngka) {
+          hasil.innerText = "Terlalu kecil! Coba lagi.";
+        } else {
+          hasil.innerText = "Terlalu besar! Coba lagi.";
+        }
+        kesempatan--;
+        document.getElementById("kesempatan").innerText = 
+          "Kesempatan: " + kesempatan;
+      }
+
+      if (kesempatan == 0 && tebakan != tebakAngka) {
+        hasil.innerText = " Kesempatan habis! T_____T Angka yang benar: " + tebakAngka;
+      }
+    }
+  </script>
+</body>
+</html>
